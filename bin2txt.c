@@ -1,5 +1,3 @@
-// 246240バイト(171バイトのデータのループ)をリトルエンディアンからビッグエンディアンに変換して1行置きに並び替える
-
 #include <stdio.h>
 
 int main(int argc, char *argv[]){
@@ -55,7 +53,7 @@ int main(int argc, char *argv[]){
   int negative;
   int negative_temp_max;
   
-  fp = fopen(argv[1], "rb");	//r:読み取り、b:バイナリモード
+  fp = fopen(argv[1], "rb");
   if(fp == NULL){
     printf("ファイルが開けません。\n");
     return 0;
@@ -355,47 +353,13 @@ int main(int argc, char *argv[]){
       printf("%X", min[0]);
       printf("%X", min[1]);
       printf(" "); 
-      //printf("%X", rain_magnitude[0]);
-      //printf("%X", rain_magnitude[1]);
-      //printf("%X", rain_magnitude[2]);
       printf("%X", rain[3]);
       printf(" "); 
-/*    printf("%X", rain_flag[0]);
-      printf(" "); 
-      printf("%X", CWwind_val[0]);
-      printf("%X", CWwind_val[1]);
-      printf("%X", CWwind_val[2]);
-      printf("%X", CWwind_val[3]);
-      printf(" "); 
-      printf("%X", CWwind_val_flag[0]);
-      printf(" "); 
-      printf("%X", max_wspeed[0]);
-      printf(" "); 
-      printf("%X", wind_dir_16[0]);
-      printf("%X", wind_dir_16[1]);
-      printf("%X", wind_dir_16[2]);
-      printf("%X", wind_dir_16[3]);
-      printf(" "); 
-      printf("%X", wind_dir_36[0]);
-      printf("%X", wind_dir_36[1]);
-      printf("%X", wind_dir_36[2]);
-      printf("%X", wind_dir_36[3]);
-      printf(" "); */
       printf("%X", ave_windir_16[0]);
       printf("%X", ave_windir_16[1]);
       printf("%X", ave_windir_16[2]);
       printf("%X", ave_windir_16[3]);
       printf(" ");  
-      /*
-      printf("%X", ave_windir16_flag[0]);
-      printf(" "); 
-      printf("%X", ave_windir_36[0]);
-      printf("%X", ave_windir_36[1]);
-      printf("%X", ave_windir_36[2]);
-      printf("%X", ave_windir_36[3]);
-      printf(" "); 
-      printf("%X", ave_windir36_flag[0]);
-      printf(" ");  */
       printf("%X", ave_wspeed[0]);
       printf("%X", ave_wspeed[1]);
       printf(" "); 
@@ -406,30 +370,13 @@ int main(int argc, char *argv[]){
       // 01:負を示すフラグ 00:正を示すフラグ 
       if(temp[1]==0xFF) {
         printf("FFF %X", 0xFF-temp_s[0]+1); 
-        //printf("N");
       }else{
         printf("FFE %X", temp[0]);
-        //printf("P");
       }
       
       printf(" "); 
       printf("%X", temp_flag[0]);
       printf(" "); 
-      
-/*      // 負と正
-      // 01:負を示すフラグ 00:正を示すフラグ       
-      if(temp_max[1]==0xFF) {
-        printf("01 %X", 0xFF-temp_max_s[0]+0x1); 
-        //printf("N");
-      }else{
-        printf("00 %X", temp_max[0]);
-        //printf("P");
-      }
-    
-      printf(" "); 
-      printf("%X", temp_max_flag[0]);
-      printf(" "); 
-*/
       
       printf("%X", daylight_hours[0]);     
       printf(" "); 
@@ -450,5 +397,5 @@ int main(int argc, char *argv[]){
   
   fclose(fp);
   
-  return 1;
+  return 0;
 }
